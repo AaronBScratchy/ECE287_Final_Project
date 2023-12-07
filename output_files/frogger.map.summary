@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Dec 06 19:20:03 2023
+Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Revision Name : frogger
+Top-level Entity Name : frogger
+Family : Cyclone IV E
+Total logic elements : 108
+    Total combinational functions : 106
+    Dedicated logic registers : 63
+Total registers : 63
+Total pins : 31
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
