@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/intelFPGA_lite/16.1/frogger/output_files/") File("frogger.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/output_files/") File("frogger.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -1,6 +1,6 @@
 module frogger(
-	input clock,     // 25 MHz
-    input reset,     // Active high
+	input clock,     
+    input reset,     
     output wire hsync,    // HSYNC (to VGA connector)
     output wire vsync,    // VSYNC (to VGA connctor)
     output [7:0] red,     // RED (to resistor DAC VGA connector)
@@ -38,9 +38,9 @@ wire next_y;
 vga_driver my_vga_driver(clk_25M, reset, color_in, next_x, next_y, hsync, vsync, red, green, blue, sync, clk, blank);
 
 always @(posedge clock or negedge reset) begin
-	if(next_y < 120) begin
-		color_in <= 8'b00011100;
-	end else
+	if(next_y < 10'd120)
+		color_in <= 8'b11100000;
+	else
 		color_in <= 00000000;
 end
 
