@@ -1,5 +1,5 @@
 Analysis & Synthesis report for frogger
-Wed Dec 06 19:53:16 2023
+Wed Dec 06 20:07:08 2023
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -16,14 +16,15 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   8. State Machine - |frogger|vga_driver:my_vga_driver|v_state
   9. State Machine - |frogger|vga_driver:my_vga_driver|h_state
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Parameter Settings for User Entity Instance: Clock_divider:my_25_MHz
- 14. Parameter Settings for User Entity Instance: vga_driver:my_vga_driver
- 15. Port Connectivity Checks: "vga_driver:my_vga_driver"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Clock_divider:my_25_MHz
+ 15. Parameter Settings for User Entity Instance: vga_driver:my_vga_driver
+ 16. Port Connectivity Checks: "vga_driver:my_vga_driver"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -50,7 +51,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 06 19:53:16 2023       ;
+; Analysis & Synthesis Status        ; Successful - Wed Dec 06 20:07:08 2023       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; frogger                                     ;
 ; Top-level Entity Name              ; frogger                                     ;
@@ -166,7 +167,8 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -256,6 +258,8 @@ Encoding Type:  One-Hot
 +------------------------------------------+----------------------------------------+
 ; Register name                            ; Reason for Removal                     ;
 +------------------------------------------+----------------------------------------+
+; color_in[0..4]                           ; Stuck at GND due to stuck port data_in ;
+; color_in[5..7]                           ; Stuck at VCC due to stuck port data_in ;
 ; vga_driver:my_vga_driver|red_reg[0]      ; Stuck at GND due to stuck port data_in ;
 ; vga_driver:my_vga_driver|green_reg[0..4] ; Stuck at GND due to stuck port data_in ;
 ; vga_driver:my_vga_driver|blue_reg[0..5]  ; Stuck at GND due to stuck port data_in ;
@@ -278,8 +282,26 @@ Encoding Type:  One-Hot
 ; vga_driver:my_vga_driver|h_state~10      ; Lost fanout                            ;
 ; vga_driver:my_vga_driver|h_state~11      ; Lost fanout                            ;
 ; vga_driver:my_vga_driver|h_state~12      ; Lost fanout                            ;
-; Total Number of Removed Registers = 37   ;                                        ;
+; Total Number of Removed Registers = 45   ;                                        ;
 +------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; color_in[0]   ; Stuck at GND              ; vga_driver:my_vga_driver|blue_reg[6]   ;
+;               ; due to stuck port data_in ;                                        ;
+; color_in[1]   ; Stuck at GND              ; vga_driver:my_vga_driver|blue_reg[7]   ;
+;               ; due to stuck port data_in ;                                        ;
+; color_in[2]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[5]  ;
+;               ; due to stuck port data_in ;                                        ;
+; color_in[3]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[6]  ;
+;               ; due to stuck port data_in ;                                        ;
+; color_in[4]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[7]  ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -344,18 +366,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga_driver:my_vga_driver"                                                                                                            ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                                                                    ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; color_in[7..5] ; Input  ; Info     ; Stuck at VCC                                                                                                               ;
-; color_in[4..0] ; Input  ; Info     ; Stuck at GND                                                                                                               ;
-; next_x         ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_x[9..1]" have no fanouts ;
-; next_x         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-; next_y         ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_y[9..1]" have no fanouts ;
-; next_y         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "vga_driver:my_vga_driver"                                                                                                    ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                                    ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; next_x ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_x[9..1]" have no fanouts ;
+; next_x ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
+; next_y ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_y[9..1]" have no fanouts ;
+; next_y ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -399,7 +419,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Dec 06 19:53:05 2023
+    Info: Processing started: Wed Dec 06 20:06:58 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off frogger -c frogger
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -414,7 +434,6 @@ Info (12021): Found 2 design units, including 2 entities, in source file debounc
     Info (12023): Found entity 1: debounce_switches File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/debounce.v Line: 1
     Info (12023): Found entity 2: debounce File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/debounce.v Line: 29
 Info (12127): Elaborating entity "frogger" for the top level hierarchy
-Critical Warning (10237): Verilog HDL warning at frogger.v(42): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 42
 Info (12128): Elaborating entity "Clock_divider" for hierarchy "Clock_divider:my_25_MHz" File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 17
 Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:my_vga_driver" File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 38
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
@@ -449,10 +468,10 @@ Info (21057): Implemented 140 device resources after synthesis - the final resou
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 29 output pins
     Info (21061): Implemented 109 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
     Info: Peak virtual memory: 4761 megabytes
-    Info: Processing ended: Wed Dec 06 19:53:16 2023
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Processing ended: Wed Dec 06 20:07:08 2023
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:23
 
 

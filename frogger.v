@@ -37,11 +37,13 @@ wire next_y;
 
 vga_driver my_vga_driver(clk_25M, reset, color_in, next_x, next_y, hsync, vsync, red, green, blue, sync, clk, blank);
 
-always @(posedge clock or negedge reset) begin
-	if(next_y < 10'd120)
+always @(posedge clk_25M) begin
+	if(next_y < 10'd20) begin
 		color_in <= 8'b11100000;
-	else
-		color_in <= 00000000;
+	end
+	else begin
+		color_in <= 8'b00000000;
+	end
 end
 
 endmodule
