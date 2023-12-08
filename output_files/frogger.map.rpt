@@ -1,5 +1,5 @@
 Analysis & Synthesis report for frogger
-Wed Dec 06 20:07:08 2023
+Thu Dec 07 21:45:33 2023
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -13,18 +13,20 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |frogger|vga_driver:my_vga_driver|v_state
-  9. State Machine - |frogger|vga_driver:my_vga_driver|h_state
+  8. State Machine - |frogger|vga_driver:driver|v_state
+  9. State Machine - |frogger|vga_driver:driver|h_state
  10. Registers Removed During Synthesis
  11. Removed Registers Triggering Further Register Optimizations
  12. General Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: Clock_divider:my_25_MHz
- 15. Parameter Settings for User Entity Instance: vga_driver:my_vga_driver
- 16. Port Connectivity Checks: "vga_driver:my_vga_driver"
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+ 14. Parameter Settings for User Entity Instance: Top-level Entity: |frogger
+ 15. Parameter Settings for User Entity Instance: Clock_divider:clk_25_MHz
+ 16. Parameter Settings for User Entity Instance: vga_driver:driver
+ 17. Parameter Settings for User Entity Instance: Clock_divider_E1:clk_E1
+ 18. Port Connectivity Checks: "Clock_divider_E1:clk_E1"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -51,16 +53,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 06 20:07:08 2023       ;
+; Analysis & Synthesis Status        ; Successful - Thu Dec 07 21:45:33 2023       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; frogger                                     ;
 ; Top-level Entity Name              ; frogger                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 108                                         ;
-;     Total combinational functions  ; 106                                         ;
-;     Dedicated logic registers      ; 63                                          ;
-; Total registers                    ; 63                                          ;
-; Total pins                         ; 31                                          ;
+; Total logic elements               ; 180                                         ;
+;     Total combinational functions  ; 178                                         ;
+;     Dedicated logic registers      ; 74                                          ;
+; Total registers                    ; 74                                          ;
+; Total pins                         ; 49                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -172,47 +174,48 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                  ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                    ; Library ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------+---------+
-; frogger.v                        ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v       ;         ;
-; vga_driver.v                     ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/vga_driver.v    ;         ;
-; Clock_divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/Clock_divider.v ;         ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                            ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------+---------+
+; frogger.v                        ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v                       ;         ;
+; vga_driver.v                     ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/vga_driver.v                    ;         ;
+; Clock_divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/Clock_divider.v                 ;         ;
+; output_files/Clock_divider_E1.v  ; yes             ; User Verilog HDL File  ; C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/output_files/Clock_divider_E1.v ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                     ;
-+---------------------------------------------+-----------------------------------+
-; Resource                                    ; Usage                             ;
-+---------------------------------------------+-----------------------------------+
-; Estimated Total logic elements              ; 108                               ;
-;                                             ;                                   ;
-; Total combinational functions               ; 106                               ;
-; Logic element usage by number of LUT inputs ;                                   ;
-;     -- 4 input functions                    ; 41                                ;
-;     -- 3 input functions                    ; 8                                 ;
-;     -- <=2 input functions                  ; 57                                ;
-;                                             ;                                   ;
-; Logic elements by mode                      ;                                   ;
-;     -- normal mode                          ; 61                                ;
-;     -- arithmetic mode                      ; 45                                ;
-;                                             ;                                   ;
-; Total registers                             ; 63                                ;
-;     -- Dedicated logic registers            ; 63                                ;
-;     -- I/O registers                        ; 0                                 ;
-;                                             ;                                   ;
-; I/O pins                                    ; 31                                ;
-;                                             ;                                   ;
-; Embedded Multiplier 9-bit elements          ; 0                                 ;
-;                                             ;                                   ;
-; Maximum fan-out node                        ; Clock_divider:my_25_MHz|clock_out ;
-; Maximum fan-out                             ; 35                                ;
-; Total fan-out                               ; 532                               ;
-; Average fan-out                             ; 2.30                              ;
-+---------------------------------------------+-----------------------------------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 180         ;
+;                                             ;             ;
+; Total combinational functions               ; 178         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 95          ;
+;     -- 3 input functions                    ; 25          ;
+;     -- <=2 input functions                  ; 58          ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 133         ;
+;     -- arithmetic mode                      ; 45          ;
+;                                             ;             ;
+; Total registers                             ; 74          ;
+;     -- Dedicated logic registers            ; 74          ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 49          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; reset~input ;
+; Maximum fan-out                             ; 49          ;
+; Total fan-out                               ; 851         ;
+; Average fan-out                             ; 2.43        ;
++---------------------------------------------+-------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -220,16 +223,16 @@ agreement for further details.
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Entity Name   ; Library Name ;
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+---------------+--------------+
-; |frogger                      ; 106 (0)             ; 63 (0)                    ; 0           ; 0            ; 0       ; 0         ; 31   ; 0            ; |frogger                          ; frogger       ; work         ;
-;    |Clock_divider:my_25_MHz|  ; 38 (38)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|Clock_divider:my_25_MHz  ; Clock_divider ; work         ;
-;    |vga_driver:my_vga_driver| ; 68 (68)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|vga_driver:my_vga_driver ; vga_driver    ; work         ;
+; |frogger                      ; 178 (74)            ; 74 (11)                   ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |frogger                          ; frogger       ; work         ;
+;    |Clock_divider:clk_25_MHz| ; 38 (38)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|Clock_divider:clk_25_MHz ; Clock_divider ; work         ;
+;    |vga_driver:driver|        ; 66 (66)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|vga_driver:driver        ; vga_driver    ; work         ;
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |frogger|vga_driver:my_vga_driver|v_state                                                              ;
+; State Machine - |frogger|vga_driver:driver|v_state                                                                     ;
 +------------------------+----------------------+-----------------------+-----------------------+------------------------+
 ; Name                   ; v_state.V_BACK_STATE ; v_state.V_PULSE_STATE ; v_state.V_FRONT_STATE ; v_state.V_ACTIVE_STATE ;
 +------------------------+----------------------+-----------------------+-----------------------+------------------------+
@@ -242,7 +245,7 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |frogger|vga_driver:my_vga_driver|h_state                                                              ;
+; State Machine - |frogger|vga_driver:driver|h_state                                                                     ;
 +------------------------+----------------------+-----------------------+-----------------------+------------------------+
 ; Name                   ; h_state.H_BACK_STATE ; h_state.H_PULSE_STATE ; h_state.H_FRONT_STATE ; h_state.H_ACTIVE_STATE ;
 +------------------------+----------------------+-----------------------+-----------------------+------------------------+
@@ -253,37 +256,36 @@ Encoding Type:  One-Hot
 +------------------------+----------------------+-----------------------+-----------------------+------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                ;
-+------------------------------------------+----------------------------------------+
-; Register name                            ; Reason for Removal                     ;
-+------------------------------------------+----------------------------------------+
-; color_in[0..4]                           ; Stuck at GND due to stuck port data_in ;
-; color_in[5..7]                           ; Stuck at VCC due to stuck port data_in ;
-; vga_driver:my_vga_driver|red_reg[0]      ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|green_reg[0..4] ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|blue_reg[0..5]  ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|red_reg[1..4]   ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|green_reg[5..7] ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|blue_reg[6,7]   ; Stuck at GND due to stuck port data_in ;
-; vga_driver:my_vga_driver|v_state~5       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~6       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~7       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~8       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~9       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~10      ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~11      ; Lost fanout                            ;
-; vga_driver:my_vga_driver|v_state~12      ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~5       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~6       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~7       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~8       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~9       ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~10      ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~11      ; Lost fanout                            ;
-; vga_driver:my_vga_driver|h_state~12      ; Lost fanout                            ;
-; Total Number of Removed Registers = 45   ;                                        ;
-+------------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; color_in[0,1,5..7]                     ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|red_reg[0]           ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|green_reg[0..4]      ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|blue_reg[0..5]       ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|red_reg[1..7]        ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|blue_reg[6,7]        ; Stuck at GND due to stuck port data_in ;
+; color_in[3,4]                          ; Merged with color_in[2]                ;
+; vga_driver:driver|v_state~5            ; Lost fanout                            ;
+; vga_driver:driver|v_state~6            ; Lost fanout                            ;
+; vga_driver:driver|v_state~7            ; Lost fanout                            ;
+; vga_driver:driver|v_state~8            ; Lost fanout                            ;
+; vga_driver:driver|v_state~9            ; Lost fanout                            ;
+; vga_driver:driver|v_state~10           ; Lost fanout                            ;
+; vga_driver:driver|v_state~11           ; Lost fanout                            ;
+; vga_driver:driver|v_state~12           ; Lost fanout                            ;
+; vga_driver:driver|h_state~5            ; Lost fanout                            ;
+; vga_driver:driver|h_state~6            ; Lost fanout                            ;
+; vga_driver:driver|h_state~7            ; Lost fanout                            ;
+; vga_driver:driver|h_state~8            ; Lost fanout                            ;
+; vga_driver:driver|h_state~9            ; Lost fanout                            ;
+; vga_driver:driver|h_state~10           ; Lost fanout                            ;
+; vga_driver:driver|h_state~11           ; Lost fanout                            ;
+; vga_driver:driver|h_state~12           ; Lost fanout                            ;
+; Total Number of Removed Registers = 44 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------------------------------------+
@@ -291,15 +293,15 @@ Encoding Type:  One-Hot
 +---------------+---------------------------+----------------------------------------+
 ; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
 +---------------+---------------------------+----------------------------------------+
-; color_in[0]   ; Stuck at GND              ; vga_driver:my_vga_driver|blue_reg[6]   ;
+; color_in[7]   ; Stuck at GND              ; vga_driver:driver|red_reg[7]           ;
 ;               ; due to stuck port data_in ;                                        ;
-; color_in[1]   ; Stuck at GND              ; vga_driver:my_vga_driver|blue_reg[7]   ;
+; color_in[6]   ; Stuck at GND              ; vga_driver:driver|red_reg[6]           ;
 ;               ; due to stuck port data_in ;                                        ;
-; color_in[2]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[5]  ;
+; color_in[5]   ; Stuck at GND              ; vga_driver:driver|red_reg[5]           ;
 ;               ; due to stuck port data_in ;                                        ;
-; color_in[3]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[6]  ;
+; color_in[1]   ; Stuck at GND              ; vga_driver:driver|blue_reg[7]          ;
 ;               ; due to stuck port data_in ;                                        ;
-; color_in[4]   ; Stuck at GND              ; vga_driver:my_vga_driver|green_reg[7]  ;
+; color_in[0]   ; Stuck at GND              ; vga_driver:driver|blue_reg[6]          ;
 ;               ; due to stuck port data_in ;                                        ;
 +---------------+---------------------------+----------------------------------------+
 
@@ -309,73 +311,119 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 63    ;
+; Total registers                              ; 74    ;
 ; Number of registers using Synchronous Clear  ; 55    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 11    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 15    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:my_vga_driver|v_counter[1] ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:my_vga_driver|h_counter[9] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|v_counter[9] ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|h_counter[4] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
 
 
-+----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Clock_divider:my_25_MHz ;
-+----------------+------------------------------+----------------------+
-; Parameter Name ; Value                        ; Type                 ;
-+----------------+------------------------------+----------------------+
-; DIVISOR        ; 0000000000000000000000000010 ; Unsigned Binary      ;
-+----------------+------------------------------+----------------------+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |frogger ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; START          ; 0000  ; Unsigned Binary                                ;
+; MOVE1          ; 0001  ; Unsigned Binary                                ;
+; MOVE2          ; 0010  ; Unsigned Binary                                ;
+; MOVE3          ; 0011  ; Unsigned Binary                                ;
+; MOVE4          ; 0100  ; Unsigned Binary                                ;
+; MOVE5          ; 0101  ; Unsigned Binary                                ;
+; MOVE6          ; 0110  ; Unsigned Binary                                ;
+; MOVE7          ; 0111  ; Unsigned Binary                                ;
+; MOVE8          ; 1000  ; Unsigned Binary                                ;
+; DONE           ; 1001  ; Unsigned Binary                                ;
+; E1M1           ; 00001 ; Unsigned Binary                                ;
+; E1M2           ; 00010 ; Unsigned Binary                                ;
+; E1M3           ; 00011 ; Unsigned Binary                                ;
+; E1M4           ; 00100 ; Unsigned Binary                                ;
+; E1M5           ; 00101 ; Unsigned Binary                                ;
+; E1M6           ; 00110 ; Unsigned Binary                                ;
+; E1M7           ; 00111 ; Unsigned Binary                                ;
+; E1M8           ; 01000 ; Unsigned Binary                                ;
+; E1M9           ; 01001 ; Unsigned Binary                                ;
+; E1M10          ; 01010 ; Unsigned Binary                                ;
+; E1M11          ; 01011 ; Unsigned Binary                                ;
+; E1M12          ; 01100 ; Unsigned Binary                                ;
+; E1M13          ; 01101 ; Unsigned Binary                                ;
+; E1M14          ; 01110 ; Unsigned Binary                                ;
+; E1M15          ; 01111 ; Unsigned Binary                                ;
+; E1M16          ; 10000 ; Unsigned Binary                                ;
+; E1M17          ; 10001 ; Unsigned Binary                                ;
+; E1M18          ; 10010 ; Unsigned Binary                                ;
+; E1M19          ; 10011 ; Unsigned Binary                                ;
+; E1M20          ; 10100 ; Unsigned Binary                                ;
++----------------+-------+------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: vga_driver:my_vga_driver ;
-+----------------+------------+-----------------------------------------+
-; Parameter Name ; Value      ; Type                                    ;
-+----------------+------------+-----------------------------------------+
-; H_ACTIVE       ; 1001111111 ; Unsigned Binary                         ;
-; H_FRONT        ; 0000001111 ; Unsigned Binary                         ;
-; H_PULSE        ; 0001011111 ; Unsigned Binary                         ;
-; H_BACK         ; 0000101111 ; Unsigned Binary                         ;
-; V_ACTIVE       ; 0111011111 ; Unsigned Binary                         ;
-; V_FRONT        ; 0000001001 ; Unsigned Binary                         ;
-; V_PULSE        ; 0000000001 ; Unsigned Binary                         ;
-; V_BACK         ; 0000100000 ; Unsigned Binary                         ;
-; LOW            ; 0          ; Unsigned Binary                         ;
-; HIGH           ; 1          ; Unsigned Binary                         ;
-; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary                         ;
-; H_FRONT_STATE  ; 00000001   ; Unsigned Binary                         ;
-; H_PULSE_STATE  ; 00000010   ; Unsigned Binary                         ;
-; H_BACK_STATE   ; 00000011   ; Unsigned Binary                         ;
-; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary                         ;
-; V_FRONT_STATE  ; 00000001   ; Unsigned Binary                         ;
-; V_PULSE_STATE  ; 00000010   ; Unsigned Binary                         ;
-; V_BACK_STATE   ; 00000011   ; Unsigned Binary                         ;
-+----------------+------------+-----------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_divider:clk_25_MHz ;
++----------------+------------------------------+-----------------------+
+; Parameter Name ; Value                        ; Type                  ;
++----------------+------------------------------+-----------------------+
+; DIVISOR        ; 0000000000000000000000000010 ; Unsigned Binary       ;
++----------------+------------------------------+-----------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga_driver:my_vga_driver"                                                                                                    ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                                                                    ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; next_x ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_x[9..1]" have no fanouts ;
-; next_x ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-; next_y ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (1 bits) it drives; bit(s) "next_y[9..1]" have no fanouts ;
-; next_y ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: vga_driver:driver ;
++----------------+------------+----------------------------------+
+; Parameter Name ; Value      ; Type                             ;
++----------------+------------+----------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary                  ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary                  ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary                  ;
+; H_BACK         ; 0000101111 ; Unsigned Binary                  ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary                  ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary                  ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary                  ;
+; V_BACK         ; 0000100000 ; Unsigned Binary                  ;
+; LOW            ; 0          ; Unsigned Binary                  ;
+; HIGH           ; 1          ; Unsigned Binary                  ;
+; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary                  ;
+; H_FRONT_STATE  ; 00000001   ; Unsigned Binary                  ;
+; H_PULSE_STATE  ; 00000010   ; Unsigned Binary                  ;
+; H_BACK_STATE   ; 00000011   ; Unsigned Binary                  ;
+; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary                  ;
+; V_FRONT_STATE  ; 00000001   ; Unsigned Binary                  ;
+; V_PULSE_STATE  ; 00000010   ; Unsigned Binary                  ;
+; V_BACK_STATE   ; 00000011   ; Unsigned Binary                  ;
++----------------+------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_divider_E1:clk_E1 ;
++----------------+------------------------------+----------------------+
+; Parameter Name ; Value                        ; Type                 ;
++----------------+------------------------------+----------------------+
+; DIVISOR        ; 0010111110101111000010000000 ; Unsigned Binary      ;
++----------------+------------------------------+----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Clock_divider_E1:clk_E1"                                                                 ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; clock_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -383,24 +431,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 31                          ;
-; cycloneiii_ff         ; 63                          ;
+; boundary_port         ; 49                          ;
+; cycloneiii_ff         ; 74                          ;
+;     CLR               ; 11                          ;
 ;     ENA               ; 5                           ;
 ;     ENA SCLR          ; 10                          ;
 ;     SCLR              ; 45                          ;
 ;     plain             ; 3                           ;
-; cycloneiii_lcell_comb ; 107                         ;
+; cycloneiii_lcell_comb ; 179                         ;
 ;     arith             ; 45                          ;
 ;         2 data inputs ; 45                          ;
-;     normal            ; 62                          ;
+;     normal            ; 134                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 4                           ;
+;         1 data inputs ; 5                           ;
 ;         2 data inputs ; 8                           ;
-;         3 data inputs ; 8                           ;
-;         4 data inputs ; 41                          ;
+;         3 data inputs ; 25                          ;
+;         4 data inputs ; 95                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.17                        ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 3.80                        ;
 +-----------------------+-----------------------------+
 
 
@@ -419,59 +468,83 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Dec 06 20:06:58 2023
+    Info: Processing started: Thu Dec 07 21:45:23 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off frogger -c frogger
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file frogger.v
-    Info (12023): Found entity 1: frogger File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 1
+    Info (12023): Found entity 1: frogger File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
-    Info (12023): Found entity 1: vga_driver File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/vga_driver.v Line: 1
+    Info (12023): Found entity 1: vga_driver File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/vga_driver.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
-    Info (12023): Found entity 1: Clock_divider File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/Clock_divider.v Line: 4
-Warning (10229): Verilog HDL Expression warning at debounce.v(47): truncated literal to match 3 bits File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/debounce.v Line: 47
-Info (12021): Found 2 design units, including 2 entities, in source file debounce.v
-    Info (12023): Found entity 1: debounce_switches File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/debounce.v Line: 1
-    Info (12023): Found entity 2: debounce File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/debounce.v Line: 29
+    Info (12023): Found entity 1: Clock_divider File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/Clock_divider.v Line: 4
+Warning (10229): Verilog HDL Expression warning at debounce.v(19): truncated literal to match 3 bits File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/debounce.v Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file debounce.v
+    Info (12023): Found entity 1: debounce File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/debounce.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file output_files/clock_divider_e1.v
+    Info (12023): Found entity 1: Clock_divider_E1 File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/output_files/Clock_divider_E1.v Line: 4
 Info (12127): Elaborating entity "frogger" for the top level hierarchy
-Info (12128): Elaborating entity "Clock_divider" for hierarchy "Clock_divider:my_25_MHz" File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 17
-Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:my_vga_driver" File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 38
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (10018): Can't recognize finite state machine "s" because it has a complex reset state
+Info (12128): Elaborating entity "Clock_divider" for hierarchy "Clock_divider:clk_25_MHz" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 22
+Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:driver" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 26
+Info (12128): Elaborating entity "Clock_divider_E1" for hierarchy "Clock_divider_E1:clk_E1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 70
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "color_in[2]" is converted into an equivalent circuit using register "color_in[2]~_emulated" and latch "color_in[2]~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 332
+    Warning (13310): Register "s.DONE" is converted into an equivalent circuit using register "s.DONE~_emulated" and latch "s.DONE~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE8" is converted into an equivalent circuit using register "s.MOVE8~_emulated" and latch "s.MOVE8~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE7" is converted into an equivalent circuit using register "s.MOVE7~_emulated" and latch "s.MOVE7~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE6" is converted into an equivalent circuit using register "s.MOVE6~_emulated" and latch "s.MOVE6~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE5" is converted into an equivalent circuit using register "s.MOVE5~_emulated" and latch "s.MOVE5~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE4" is converted into an equivalent circuit using register "s.MOVE4~_emulated" and latch "s.MOVE4~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE3" is converted into an equivalent circuit using register "s.MOVE3~_emulated" and latch "s.MOVE3~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE2" is converted into an equivalent circuit using register "s.MOVE2~_emulated" and latch "s.MOVE2~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.MOVE1" is converted into an equivalent circuit using register "s.MOVE1~_emulated" and latch "s.MOVE1~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
+    Warning (13310): Register "s.START" is converted into an equivalent circuit using register "s.START~_emulated" and latch "s.START~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 42
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "red[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 6
-    Warning (13410): Pin "red[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 6
-    Warning (13410): Pin "red[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 6
-    Warning (13410): Pin "red[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 6
-    Warning (13410): Pin "red[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 6
-    Warning (13410): Pin "green[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[5]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[6]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "green[7]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 7
-    Warning (13410): Pin "blue[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[5]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[6]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "blue[7]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 8
-    Warning (13410): Pin "sync" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/frogger/ECE306_Final_Project/frogger.v Line: 9
+    Warning (13410): Pin "red[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[5]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[6]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "red[7]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
+    Warning (13410): Pin "green[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
+    Warning (13410): Pin "green[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
+    Warning (13410): Pin "green[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
+    Warning (13410): Pin "green[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
+    Warning (13410): Pin "green[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
+    Warning (13410): Pin "blue[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[5]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[6]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "blue[7]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 6
+    Warning (13410): Pin "sync" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 7
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 140 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
+Info (21057): Implemented 240 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 20 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 109 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 4761 megabytes
-    Info: Processing ended: Wed Dec 06 20:07:08 2023
+    Info (21061): Implemented 191 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 4778 megabytes
+    Info: Processing ended: Thu Dec 07 21:45:33 2023
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:23
+    Info: Total CPU time (on all processors): 00:00:22
 
 

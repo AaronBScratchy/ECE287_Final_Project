@@ -55,8 +55,8 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
-set_location_assignment PIN_AB28 -to reset
-set_location_assignment PIN_AG14 -to clock
+set_location_assignment PIN_R24 -to reset
+set_location_assignment PIN_Y2 -to clock
 set_location_assignment PIN_F11 -to blank
 set_location_assignment PIN_A12 -to clk
 set_location_assignment PIN_B10 -to blue[0]
@@ -124,4 +124,40 @@ set_global_assignment -name CDF_FILE output_files/Chain7.cdf
 set_global_assignment -name CDF_FILE output_files/Chain8.cdf
 set_global_assignment -name CDF_FILE output_files/Chain9.cdf
 set_global_assignment -name CDF_FILE output_files/Chain3.cdf
+set_location_assignment PIN_AC28 -to SW[1]
+set_location_assignment PIN_AC27 -to SW[2]
+set_location_assignment PIN_AD27 -to SW[3]
+set_location_assignment PIN_AB27 -to SW[4]
+set_location_assignment PIN_AC26 -to SW[5]
+set_location_assignment PIN_AD26 -to SW[6]
+set_location_assignment PIN_AB26 -to SW[7]
+set_location_assignment PIN_AC25 -to SW[8]
+set_location_assignment PIN_AB25 -to SW[9]
+set_location_assignment PIN_AC24 -to SW[10]
+set_location_assignment PIN_AB24 -to SW[11]
+set_location_assignment PIN_AB23 -to SW[12]
+set_location_assignment PIN_AA24 -to SW[13]
+set_location_assignment PIN_AA23 -to SW[14]
+set_location_assignment PIN_AA22 -to SW[15]
+set_location_assignment PIN_Y24 -to SW[16]
+set_location_assignment PIN_Y23 -to SW[17]
+set_location_assignment PIN_AB28 -to SW[0]
+set_global_assignment -name CDF_FILE output_files/Chain10.cdf
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name CDF_FILE output_files/Chain11.cdf
+set_global_assignment -name CDF_FILE output_files/Chain12.cdf
+set_global_assignment -name CDF_FILE output_files/Chain13.cdf
+set_global_assignment -name CDF_FILE output_files/Chain14.cdf
+set_global_assignment -name CDF_FILE output_files/Chain15.cdf
+set_global_assignment -name CDF_FILE output_files/Chain16.cdf
+set_global_assignment -name CDF_FILE output_files/Chain17.cdf
+set_global_assignment -name CDF_FILE output_files/Chain18.cdf
+set_global_assignment -name CDF_FILE output_files/Chain19.cdf
+set_global_assignment -name VERILOG_FILE output_files/Clock_divider_E1.v
+set_global_assignment -name CDF_FILE output_files/Chain20.cdf
+set_global_assignment -name CDF_FILE output_files/Chain21.cdf
+set_global_assignment -name CDF_FILE output_files/Chain24.cdf
+set_global_assignment -name CDF_FILE output_files/Chain27.cdf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name CDF_FILE output_files/Chain28.cdf
