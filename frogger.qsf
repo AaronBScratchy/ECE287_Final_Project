@@ -154,10 +154,14 @@ set_global_assignment -name CDF_FILE output_files/Chain16.cdf
 set_global_assignment -name CDF_FILE output_files/Chain17.cdf
 set_global_assignment -name CDF_FILE output_files/Chain18.cdf
 set_global_assignment -name CDF_FILE output_files/Chain19.cdf
-set_global_assignment -name VERILOG_FILE output_files/Clock_divider_E1.v
 set_global_assignment -name CDF_FILE output_files/Chain20.cdf
 set_global_assignment -name CDF_FILE output_files/Chain21.cdf
 set_global_assignment -name CDF_FILE output_files/Chain24.cdf
 set_global_assignment -name CDF_FILE output_files/Chain27.cdf
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name CDF_FILE output_files/Chain28.cdf
+set_global_assignment -name VERILOG_FILE Clock_divider_E1.v
+set_global_assignment -name CDF_FILE output_files/Chain22.cdf
+set_global_assignment -name CDF_FILE output_files/Chain25.cdf
+set_global_assignment -name CDF_FILE output_files/Chain29.cdf
+set_global_assignment -name CDF_FILE output_files/Chain30.cdf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
