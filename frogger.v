@@ -43,30 +43,30 @@ parameter DONE = 4'b1001;
 
 reg [3:0]s;
 reg [3:0]ns;
-parameter E1M1 = 5'd0;
-parameter E1M2 = 5'd1;
-parameter E1M3 = 5'd2;
-parameter E1M4 = 5'd3;
-parameter E1M5 = 5'd4;
-parameter E1M6 = 5'd5;
-parameter E1M7 = 5'd6;
-parameter E1M8 = 5'd7;
-parameter E1M9 = 5'd8;
-parameter E1M10 =5'd9;
-parameter E1M11 = 5'd10;
-parameter E1M12 = 5'd11;
-parameter E1M13 = 5'd12;
-parameter E1M14 = 5'd13;
-parameter E1M15 = 5'd14;
-parameter E1M16 = 5'd15;
-parameter E1M17 = 5'd16;
-parameter E1M18 = 5'd17;
-parameter E1M19 = 5'd18;
-parameter E1M20 = 5'd19;
+parameter E1M1 = 5'b00000;
+parameter E1M2 = 5'b00001;
+parameter E1M3 = 5'b00010;
+parameter E1M4 = 5'b00011;
+parameter E1M5 = 5'b00100;
+parameter E1M6 = 5'b00101;
+parameter E1M7 = 5'b00110;
+parameter E1M8 = 5'b00111;
+parameter E1M9 = 5'b01000;
+parameter E1M10 =5'b01001;
+parameter E1M11 = 5'b01010;
+parameter E1M12 = 5'b01011;
+parameter E1M13 = 5'b01100;
+parameter E1M14 = 5'b01101;
+parameter E1M15 = 5'b01110;
+parameter E1M16 = 5'b01111;
+parameter E1M17 = 5'b10000;
+parameter E1M18 = 5'b10001;
+parameter E1M19 = 5'b10010;
+parameter E1M20 = 5'b10011;
 
 
-reg [5:0]E1s;
-reg [5:0]E1ns;
+reg [4:0]E1s;
+reg [4:0]E1ns;
 
 wire E1_clk;
 Clock_divider_E1 clk_E1(clock,E1_clk);
@@ -158,28 +158,187 @@ end*/
 
 always@(*) begin
 		case(E1s)
-			E1M1: E1ns = E1M2;
-			E1M2: E1ns = E1M3;
-			E1M3: E1ns = E1M4;
-			E1M4: E1ns = E1M5;
-			E1M5: E1ns = E1M6;
-			E1M6: E1ns = E1M7;
-			E1M7: E1ns = E1M8;
-			E1M8: E1ns = E1M9;
-			E1M9: E1ns = E1M10;
-			E1M10: E1ns = E1M11;
-			E1M11: E1ns = E1M12;
-			E1M12: E1ns = E1M13;
-			E1M13: E1ns = E1M14;
-			E1M14: E1ns = E1M15;
-			E1M15: E1ns = E1M16;
-			E1M16: E1ns = E1M17;
-			E1M17: E1ns = E1M18;
-			E1M18: E1ns = E1M19;
-			E1M19: E1ns = E1M20;
-			E1M20: E1ns = E1M1;
+			E1M1: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M2;
+				else
+					E1ns = E1M1;
+			end
+			E1M2: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M3;
+				else
+					E1ns = E1M2;
+			end
+			E1M3: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M4;
+				else
+					E1ns = E1M3;
+			end
+			E1M4: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M5;
+				else
+					E1ns = E1M4;
+			end
+			E1M5: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M6;
+				else
+					E1ns = E1M5;
+			end
+			E1M6: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M1;
+				else
+					E1ns = E1M6;
+			end/*
+			E1M7: begin
+				if(E1_clk == 1'b1) 
+					E1ns = E1M8;
+				else
+					E1ns = E1M7;
+			end
+			E1M8: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M1;
+				else
+					E1ns = E1M8;
+			end
+			/*
+			E1M9: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M10;
+				else
+					E1ns = E1M9;
+			end
+			E1M10: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M11;
+				else
+					E1ns = E1M10;
+			end
+			E1M11: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M12;
+				else
+					E1ns = E1M11;
+			end
+			E1M12: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M13;
+				else
+					E1ns = E1M12;
+			end
+			E1M13: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M14;
+				else
+					E1ns = E1M13;
+			end
+			E1M14: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M15;
+				else
+					E1ns = E1M14;
+			end
+			E1M15: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M16;
+				else
+					E1ns = E1M15;
+			end
+			E1M16: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M17;
+				else
+					E1ns = E1M16;
+			end
+			E1M17: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M18;
+				else
+					E1ns = E1M17;
+			end
+			E1M18: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M19;
+				else
+					E1ns = E1M18;
+			end
+			E1M19: begin
+				if(E1_clk == 1'b1)
+					E1ns = E1M20;
+				else
+					E1ns = E1M19;
+			end
+			E1M20: begin
+				if(E1_clk == 1'b0)
+					E1ns = E1M1;
+				else
+					E1ns = E1M20;
+			end*/
 			default: E1ns = E1M1;
 		endcase
+	case(s)
+	START: begin
+				if(SW[17] == 1'd1)
+					ns = MOVE1;
+				else
+					ns = START;
+			 end
+	MOVE1: begin
+				if(SW[16] == 1'd1)
+					ns = MOVE2;
+				else
+					ns = MOVE1;
+			 end
+	MOVE2: begin
+				if(SW[15] == 1'd1)
+					ns = MOVE3;
+				else
+					ns = MOVE2;
+			 end
+	MOVE3: begin
+				if(SW[14] == 1'd1)
+					ns = MOVE4;
+				else
+					ns = MOVE3;
+			 end
+	MOVE4: begin
+				if(SW[13] == 1'd1)
+					ns = MOVE5;
+				else
+					ns = MOVE4;
+			 end
+	MOVE5: begin
+				if(SW[12] == 1'd1)
+					ns = MOVE6;
+				else
+					ns = MOVE5;
+			 end
+	MOVE6: begin
+				if(SW[11] == 1'd1)
+					ns = MOVE7;
+				else
+					ns = MOVE6;
+			 end
+	MOVE7: begin
+				if(SW[10] == 1'd1)
+					ns = MOVE8;
+				else
+					ns = MOVE7;
+			 end
+	MOVE8: begin
+				if(SW[9] == 1'd1)
+					ns = DONE;
+				else
+					ns = MOVE8;
+			 end
+	DONE: ns = DONE;
+	default: ns = START;
+	endcase
 end
 
 
@@ -187,7 +346,7 @@ always@(posedge clock or negedge rev_reset) begin
 if(rev_reset == 1'b0)begin
 	case(E1s)
 		E1M1: begin
-			if(next_x < 10'd32 & next_x > 10'd0)
+			if((next_y < 10'd192) & (next_y > 10'd144) & next_x < 10'd32 & next_x > 10'd0)
 				color_in <= 8'b00011100;
 			else
 				color_in <= 8'b00000000;
@@ -199,7 +358,7 @@ if(rev_reset == 1'b0)begin
 				color_in <= 8'b00000000;
 			end
 		E1M3: begin
-			if(next_x < 10'd96 & next_x > 10'd64)
+			if(next_x > 10'd64 & next_x < 10'd96)
 				color_in <= 8'b00011100;
 			else
 				color_in <= 8'b00000000;
@@ -307,12 +466,10 @@ if(rev_reset == 1'b0)begin
 				color_in <= 8'b00000000;
 			end
 		default: begin
-			E1_x <= 10'd0;
 			color_in <= 8'd0;
 		end
 	endcase
 end else begin
-	E1_x <= 10'd0;
 	color_in <= 8'd0;
 	end
 end
@@ -399,19 +556,12 @@ end*/
 	end
 end*/
 
+
 always@(posedge clock or negedge rev_reset) begin
-	if(rev_reset == 1'b0) begin
-		if(count < 32'd50000000) begin
-			count <= count + 32'd1;
-			E1s <= E1s;
-		end else begin
-			count <= 32'd0;
-			E1s <= E1ns;
-		end
-	end else begin
+	if(rev_reset == 1'b0)
+		E1s <= E1ns;
+	else
 		E1s <= E1M1;
-		count <= 32'd0;
-	end
 end
 
 endmodule
