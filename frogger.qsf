@@ -175,4 +175,9 @@ set_global_assignment -name CDF_FILE output_files/Chain36.cdf
 set_global_assignment -name CDF_FILE output_files/Chain37.cdf
 set_global_assignment -name CDF_FILE output_files/Chain38.cdf
 set_global_assignment -name CDF_FILE output_files/Chain39.cdf
+set_global_assignment -name CDF_FILE output_files/Chain40.cdf
+set_global_assignment -name CDF_FILE output_files/Chain41.cdf
+set_global_assignment -name CDF_FILE output_files/Chain42.cdf
+set_global_assignment -name CDF_FILE output_files/Chain43.cdf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name CDF_FILE output_files/Chain44.cdf

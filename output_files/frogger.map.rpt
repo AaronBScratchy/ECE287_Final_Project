@@ -1,5 +1,5 @@
 Analysis & Synthesis report for frogger
-Fri Dec 08 18:08:30 2023
+Fri Dec 08 20:38:31 2023
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -52,15 +52,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 08 18:08:30 2023       ;
+; Analysis & Synthesis Status        ; Successful - Fri Dec 08 20:38:31 2023       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; frogger                                     ;
 ; Top-level Entity Name              ; frogger                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 194                                         ;
-;     Total combinational functions  ; 192                                         ;
-;     Dedicated logic registers      ; 99                                          ;
-; Total registers                    ; 99                                          ;
+; Total logic elements               ; 269                                         ;
+;     Total combinational functions  ; 265                                         ;
+;     Dedicated logic registers      ; 113                                         ;
+; Total registers                    ; 113                                         ;
 ; Total pins                         ; 49                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -168,8 +168,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -190,20 +189,20 @@ agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 194         ;
+; Estimated Total logic elements              ; 269         ;
 ;                                             ;             ;
-; Total combinational functions               ; 192         ;
+; Total combinational functions               ; 265         ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 76          ;
-;     -- 3 input functions                    ; 29          ;
-;     -- <=2 input functions                  ; 87          ;
+;     -- 4 input functions                    ; 127         ;
+;     -- 3 input functions                    ; 42          ;
+;     -- <=2 input functions                  ; 96          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 120         ;
+;     -- normal mode                          ; 193         ;
 ;     -- arithmetic mode                      ; 72          ;
 ;                                             ;             ;
-; Total registers                             ; 99          ;
-;     -- Dedicated logic registers            ; 99          ;
+; Total registers                             ; 113         ;
+;     -- Dedicated logic registers            ; 113         ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
 ; I/O pins                                    ; 49          ;
@@ -211,9 +210,9 @@ agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 65          ;
-; Total fan-out                               ; 918         ;
-; Average fan-out                             ; 2.36        ;
+; Maximum fan-out                             ; 76          ;
+; Total fan-out                               ; 1223        ;
+; Average fan-out                             ; 2.57        ;
 +---------------------------------------------+-------------+
 
 
@@ -222,10 +221,10 @@ agreement for further details.
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Entity Name      ; Library Name ;
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+------------------+--------------+
-; |frogger                      ; 192 (42)            ; 99 (7)                    ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |frogger                          ; frogger          ; work         ;
+; |frogger                      ; 265 (116)           ; 113 (18)                  ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |frogger                          ; frogger          ; work         ;
 ;    |Clock_divider:clk_25_MHz| ; 38 (38)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|Clock_divider:clk_25_MHz ; Clock_divider    ; work         ;
-;    |Clock_divider_E1:clk_E1|  ; 43 (43)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|Clock_divider_E1:clk_E1  ; Clock_divider_E1 ; work         ;
-;    |vga_driver:driver|        ; 69 (69)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|vga_driver:driver        ; vga_driver       ; work         ;
+;    |Clock_divider_E1:clk_E1|  ; 42 (42)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|Clock_divider_E1:clk_E1  ; Clock_divider_E1 ; work         ;
+;    |vga_driver:driver|        ; 69 (69)             ; 37 (37)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |frogger|vga_driver:driver        ; vga_driver       ; work         ;
 +-------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -262,7 +261,7 @@ Encoding Type:  One-Hot
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
 ; E1s.E1M20                              ; Stuck at GND due to stuck port data_in ;
-; color_in[0,1,5..7]                     ; Stuck at GND due to stuck port data_in ;
+; color_in[0,1]                          ; Stuck at GND due to stuck port data_in ;
 ; E1s.E1M7                               ; Stuck at GND due to stuck port data_in ;
 ; E1s.E1M8                               ; Stuck at GND due to stuck port data_in ;
 ; E1s.E1M9                               ; Stuck at GND due to stuck port data_in ;
@@ -279,8 +278,9 @@ Encoding Type:  One-Hot
 ; vga_driver:driver|red_reg[0]           ; Stuck at GND due to stuck port data_in ;
 ; vga_driver:driver|green_reg[0..4]      ; Stuck at GND due to stuck port data_in ;
 ; vga_driver:driver|blue_reg[0..5]       ; Stuck at GND due to stuck port data_in ;
-; vga_driver:driver|red_reg[1..7]        ; Stuck at GND due to stuck port data_in ;
+; vga_driver:driver|red_reg[1..4]        ; Stuck at GND due to stuck port data_in ;
 ; vga_driver:driver|blue_reg[6,7]        ; Stuck at GND due to stuck port data_in ;
+; color_in[6,7]                          ; Merged with color_in[5]                ;
 ; color_in[3,4]                          ; Merged with color_in[2]                ;
 ; vga_driver:driver|v_state~5            ; Lost fanout                            ;
 ; vga_driver:driver|v_state~6            ; Lost fanout                            ;
@@ -298,32 +298,20 @@ Encoding Type:  One-Hot
 ; vga_driver:driver|h_state~10           ; Lost fanout                            ;
 ; vga_driver:driver|h_state~11           ; Lost fanout                            ;
 ; vga_driver:driver|h_state~12           ; Lost fanout                            ;
-; Total Number of Removed Registers = 58 ;                                        ;
+; Total Number of Removed Registers = 54 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                         ;
-+--------------------------------+---------------------------+----------------------------------------+
-; Register name                  ; Reason for Removal        ; Registers Removed due to This Register ;
-+--------------------------------+---------------------------+----------------------------------------+
-; color_in[7]                    ; Stuck at GND              ; vga_driver:driver|red_reg[7]           ;
-;                                ; due to stuck port data_in ;                                        ;
-; color_in[6]                    ; Stuck at GND              ; vga_driver:driver|red_reg[6]           ;
-;                                ; due to stuck port data_in ;                                        ;
-; color_in[5]                    ; Stuck at GND              ; vga_driver:driver|red_reg[5]           ;
-;                                ; due to stuck port data_in ;                                        ;
-; color_in[1]                    ; Stuck at GND              ; vga_driver:driver|blue_reg[7]          ;
-;                                ; due to stuck port data_in ;                                        ;
-; color_in[0]                    ; Stuck at GND              ; vga_driver:driver|blue_reg[6]          ;
-;                                ; due to stuck port data_in ;                                        ;
-; vga_driver:driver|green_reg[4] ; Stuck at GND              ; vga_driver:driver|green_reg[3]         ;
-;                                ; due to stuck port data_in ;                                        ;
-; vga_driver:driver|blue_reg[5]  ; Stuck at GND              ; vga_driver:driver|blue_reg[2]          ;
-;                                ; due to stuck port data_in ;                                        ;
-; vga_driver:driver|blue_reg[4]  ; Stuck at GND              ; vga_driver:driver|blue_reg[3]          ;
-;                                ; due to stuck port data_in ;                                        ;
-+--------------------------------+---------------------------+----------------------------------------+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; color_in[1]   ; Stuck at GND              ; vga_driver:driver|blue_reg[7]          ;
+;               ; due to stuck port data_in ;                                        ;
+; color_in[0]   ; Stuck at GND              ; vga_driver:driver|blue_reg[6]          ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -331,12 +319,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 99    ;
+; Total registers                              ; 113   ;
 ; Number of registers using Synchronous Clear  ; 83    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Clear ; 18    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 15    ;
+; Number of registers using Clock Enable       ; 18    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -346,8 +334,9 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
-; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|v_counter[2] ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|h_counter[2] ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|v_counter[6] ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |frogger|vga_driver:driver|h_counter[6] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |frogger|vga_driver:driver|red_reg      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
 
 
@@ -443,24 +432,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 49                          ;
-; cycloneiii_ff         ; 99                          ;
-;     CLR               ; 7                           ;
-;     ENA               ; 5                           ;
+; cycloneiii_ff         ; 113                         ;
+;     CLR               ; 18                          ;
+;     ENA               ; 8                           ;
 ;     ENA SCLR          ; 10                          ;
 ;     SCLR              ; 73                          ;
 ;     plain             ; 4                           ;
-; cycloneiii_lcell_comb ; 193                         ;
+; cycloneiii_lcell_comb ; 266                         ;
 ;     arith             ; 72                          ;
 ;         2 data inputs ; 72                          ;
-;     normal            ; 121                         ;
+;     normal            ; 194                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 9                           ;
-;         3 data inputs ; 29                          ;
-;         4 data inputs ; 76                          ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 42                          ;
+;         4 data inputs ; 127                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 3.79                        ;
+; Max LUT depth         ; 13.00                       ;
+; Average LUT depth     ; 4.42                        ;
 +-----------------------+-----------------------------+
 
 
@@ -469,7 +458,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -479,11 +468,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Fri Dec 08 18:08:19 2023
+    Info: Processing started: Fri Dec 08 20:38:21 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off frogger -c frogger
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (10090): Verilog HDL syntax warning at frogger.v(209): extra block comment delimiter characters /* within block comment File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 209
 Info (12021): Found 1 design units, including 1 entities, in source file frogger.v
     Info (12023): Found entity 1: frogger File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
@@ -496,18 +484,29 @@ Info (12021): Found 1 design units, including 1 entities, in source file debounc
 Info (12021): Found 1 design units, including 1 entities, in source file clock_divider_e1.v
     Info (12023): Found entity 1: Clock_divider_E1 File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/Clock_divider_E1.v Line: 4
 Info (12127): Elaborating entity "frogger" for the top level hierarchy
-Warning (10858): Verilog HDL warning at frogger.v(44): object s used but never assigned File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
-Warning (10036): Verilog HDL or VHDL warning at frogger.v(45): object "ns" assigned a value but never read File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 45
-Info (10264): Verilog HDL Case Statement information at frogger.v(160): all case item expressions in this case statement are onehot File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 160
+Warning (10036): Verilog HDL or VHDL warning at frogger.v(94): object "move" assigned a value but never read File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 94
+Info (10264): Verilog HDL Case Statement information at frogger.v(167): all case item expressions in this case statement are onehot File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 167
 Info (10018): Can't recognize finite state machine "E1s" because it has a complex reset state
+Info (10018): Can't recognize finite state machine "s" because it has a complex reset state
 Info (12128): Elaborating entity "Clock_divider" for hierarchy "Clock_divider:clk_25_MHz" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 22
 Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:driver" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 28
 Info (12128): Elaborating entity "Clock_divider_E1" for hierarchy "Clock_divider_E1:clk_E1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 72
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "color_in[2]" is converted into an equivalent circuit using register "color_in[2]~_emulated" and latch "color_in[2]~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 473
+    Warning (13310): Register "color_in[5]" is converted into an equivalent circuit using register "color_in[5]~_emulated" and latch "color_in[5]~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 488
+    Warning (13310): Register "color_in[2]" is converted into an equivalent circuit using register "color_in[2]~_emulated" and latch "color_in[2]~5" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 488
+    Warning (13310): Register "E1s.E1M4" is converted into an equivalent circuit using register "E1s.E1M4~_emulated" and latch "E1s.E1M4~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
+    Warning (13310): Register "s.DONE" is converted into an equivalent circuit using register "s.DONE~_emulated" and latch "s.DONE~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE8" is converted into an equivalent circuit using register "s.MOVE8~_emulated" and latch "s.MOVE8~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE7" is converted into an equivalent circuit using register "s.MOVE7~_emulated" and latch "s.MOVE7~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE6" is converted into an equivalent circuit using register "s.MOVE6~_emulated" and latch "s.MOVE6~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE5" is converted into an equivalent circuit using register "s.MOVE5~_emulated" and latch "s.MOVE5~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE4" is converted into an equivalent circuit using register "s.MOVE4~_emulated" and latch "s.MOVE4~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE3" is converted into an equivalent circuit using register "s.MOVE3~_emulated" and latch "s.MOVE3~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE2" is converted into an equivalent circuit using register "s.MOVE2~_emulated" and latch "s.MOVE2~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.MOVE1" is converted into an equivalent circuit using register "s.MOVE1~_emulated" and latch "s.MOVE1~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
+    Warning (13310): Register "s.START" is converted into an equivalent circuit using register "s.START~_emulated" and latch "s.START~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 44
     Warning (13310): Register "E1s.E1M6" is converted into an equivalent circuit using register "E1s.E1M6~_emulated" and latch "E1s.E1M6~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
     Warning (13310): Register "E1s.E1M5" is converted into an equivalent circuit using register "E1s.E1M5~_emulated" and latch "E1s.E1M5~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
-    Warning (13310): Register "E1s.E1M4" is converted into an equivalent circuit using register "E1s.E1M4~_emulated" and latch "E1s.E1M4~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
     Warning (13310): Register "E1s.E1M3" is converted into an equivalent circuit using register "E1s.E1M3~_emulated" and latch "E1s.E1M3~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
     Warning (13310): Register "E1s.E1M2" is converted into an equivalent circuit using register "E1s.E1M2~_emulated" and latch "E1s.E1M2~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
     Warning (13310): Register "E1s.E1M1" is converted into an equivalent circuit using register "E1s.E1M1~_emulated" and latch "E1s.E1M1~1" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 68
@@ -517,9 +516,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "red[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
     Warning (13410): Pin "red[3]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
     Warning (13410): Pin "red[4]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
-    Warning (13410): Pin "red[5]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
-    Warning (13410): Pin "red[6]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
-    Warning (13410): Pin "red[7]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 4
     Warning (13410): Pin "green[0]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
     Warning (13410): Pin "green[1]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
     Warning (13410): Pin "green[2]" is stuck at GND File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 5
@@ -538,7 +534,7 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 18 input pin(s) that do not drive logic
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
     Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
@@ -548,22 +544,13 @@ Warning (21074): Design contains 18 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[10]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[11]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[12]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[13]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[14]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[15]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[17]" File: C:/Users/benjamad/Documents/GitHub/ECE306_Final_Project/frogger.v Line: 3
-Info (21057): Implemented 250 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 336 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 20 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 201 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 55 warnings
-    Info: Peak virtual memory: 4778 megabytes
-    Info: Processing ended: Fri Dec 08 18:08:30 2023
+    Info (21061): Implemented 287 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 52 warnings
+    Info: Peak virtual memory: 4764 megabytes
+    Info: Processing ended: Fri Dec 08 20:38:32 2023
     Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:22
 

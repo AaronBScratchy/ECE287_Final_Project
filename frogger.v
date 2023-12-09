@@ -91,11 +91,18 @@ module vga_driver (
     output blank          // BLANK to VGA connector
 );
 */
+reg move;
+always @(*) begin
+	if(E1s == E1M4)
+		move = 1'b1;
+	else
+		move = 1'b0;
+end
 
 
 
 //Player FSM
-/*always@(*) begin
+always@(*) begin
 case(s)
 	START: begin
 				if(SW[17] == 1'd1)
@@ -154,7 +161,7 @@ case(s)
 	DONE: ns = DONE;
 	default: ns = START;
 endcase
-end*/
+end
 
 always@(*) begin
 		case(E1s)
@@ -206,7 +213,7 @@ always@(*) begin
 				else
 					E1ns = E1M8;
 			end
-			/*
+			
 			E1M9: begin
 				if(E1_clk == 1'b1)
 					E1ns = E1M10;
@@ -281,72 +288,79 @@ always@(*) begin
 			end*/
 			default: E1ns = E1M1;
 		endcase
-	case(s)
-	START: begin
-				if(SW[17] == 1'd1)
-					ns = MOVE1;
-				else
-					ns = START;
-			 end
-	MOVE1: begin
-				if(SW[16] == 1'd1)
-					ns = MOVE2;
-				else
-					ns = MOVE1;
-			 end
-	MOVE2: begin
-				if(SW[15] == 1'd1)
-					ns = MOVE3;
-				else
-					ns = MOVE2;
-			 end
-	MOVE3: begin
-				if(SW[14] == 1'd1)
-					ns = MOVE4;
-				else
-					ns = MOVE3;
-			 end
-	MOVE4: begin
-				if(SW[13] == 1'd1)
-					ns = MOVE5;
-				else
-					ns = MOVE4;
-			 end
-	MOVE5: begin
-				if(SW[12] == 1'd1)
-					ns = MOVE6;
-				else
-					ns = MOVE5;
-			 end
-	MOVE6: begin
-				if(SW[11] == 1'd1)
-					ns = MOVE7;
-				else
-					ns = MOVE6;
-			 end
-	MOVE7: begin
-				if(SW[10] == 1'd1)
-					ns = MOVE8;
-				else
-					ns = MOVE7;
-			 end
-	MOVE8: begin
-				if(SW[9] == 1'd1)
-					ns = DONE;
-				else
-					ns = MOVE8;
-			 end
-	DONE: ns = DONE;
-	default: ns = START;
-	endcase
 end
 
 
 always@(posedge clock or negedge rev_reset) begin
 if(rev_reset == 1'b0)begin
-	case(E1s)
+if(next_x < 10'd336 & next_x > 10'd304)begin
+	case(s)
+			START:begin
+						if((next_y < 10'd48 & next_x < 10'd336 & next_x > 10'd304))
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE1:begin
+						if((next_y < 10'd96) & (next_y > 10'd48) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE2:begin
+						if((next_y < 10'd144) & (next_y > 10'd96) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE3:begin
+						if((next_y < 10'd192) & (next_y > 10'd144) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE4:begin
+						if((next_y < 10'd240) & (next_y > 10'd192) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE5:begin
+						if((next_y < 10'd288) & (next_y > 10'd240) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE6:begin
+						if((next_y < 10'd336) & (next_y > 10'd288) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE7:begin
+						if((next_y < 10'd384) & (next_y > 10'd336) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			MOVE8:begin
+						if((next_y < 10'd432) & (next_y > 10'd384) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			DONE:begin
+						if((next_y < 10'd480) & (next_y > 10'd432) & next_x < 10'd336 & next_x > 10'd304)
+							color_in <= 8'b00011100;
+						else
+							color_in <= 8'b00000000;
+					end
+			default: color_in <= 8'b00000000;
+		endcase
+end else begin
+		case(E1s)
 		E1M1: begin
-			if((next_y < 10'd192) & (next_y > 10'd144) & next_x < 10'd32 & next_x > 10'd0)
+			if(next_x < 10'd32 && next_x > 10'd0)
 				color_in <= 8'b00011100;
 			else
 				color_in <= 8'b00000000;
@@ -365,7 +379,7 @@ if(rev_reset == 1'b0)begin
 			end
 		E1M4: begin
 			if(next_x < 10'd128 & next_x > 10'd96)
-				color_in <= 8'b00011100;
+				color_in <= 8'b11100000;
 			else
 				color_in <= 8'b00000000;
 			end
@@ -469,6 +483,7 @@ if(rev_reset == 1'b0)begin
 			color_in <= 8'd0;
 		end
 	endcase
+end
 end else begin
 	color_in <= 8'd0;
 	end
@@ -548,13 +563,16 @@ end
 end*/
 
 
-/*always@(posedge clock or negedge rev_reset) begin
+always@(posedge clock or negedge rev_reset) begin
 	if(rev_reset == 1'b0) begin
-		s <= ns;
+		   if(E1s != E1M4 & s != ns)
+				s <= START;
+			else
+				s <= ns;
 	end else begin
 		s <= START;
 	end
-end*/
+end
 
 
 always@(posedge clock or negedge rev_reset) begin
@@ -563,5 +581,7 @@ always@(posedge clock or negedge rev_reset) begin
 	else
 		E1s <= E1M1;
 end
+
+/*if((SW[17] == 1'd1) & E1s == E1M4) begin*/
 
 endmodule
