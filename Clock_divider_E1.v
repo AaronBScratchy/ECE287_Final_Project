@@ -7,9 +7,9 @@ parameter DIVISOR = 28'd50000000;
 
 always @(posedge clock_in)
 begin
- counter <= count + 28'd1;
+ count <= count + 28'd1;
  if(count>=(DIVISOR-1))
   count <= 28'd0;
- clock_out <= (counter<DIVISOR/2)?1'b1:1'b0;
+ clock_out <= (count<DIVISOR/2)?1'b1:1'b0;
 end
 endmodule
